@@ -1,0 +1,105 @@
+
+/*
+DBeaver 22.3.0 
+
+תרגול שיעור שני – מאגר נתונים Books
+1 הצג מטבלת ספרים את כל הספרים שהשם שלהם מתחיל באותיות Th
+2 הצג את כל הספרים מקטגוריות- פסיכולוגיה ועסקי ם
+הצג את כל הסופרים ששם המשפחה שלהם מתחיל באות 3
+S
+4 הצג את כל הסופרים שקיצור )שתי אותיות( המדינה שלהם מכיל את האו ת N
+5 הצג את כל הסופרות אשר מתגוררות בעיר Oakland או את כל הסופרים המתגוררים בעיר
+Berkeley
+6 הצג את כל הסופרו ת עם קידומת המדינה CA וגם את כל הסופרי ם עם קידומת המדינה IN או
+את כל הסופרים והסופרות שמשכורתם גדולה מ 10000$
+7 הצג את כל הסופרים והסופרות שמתגוררים בערים: Berkeley , Lawrence , Nashville ו –
+San Jose
+8 הצג את כל הסופרים ששמם הפרטי מסתיים בספרה 1
+9 הצג את הסופר ששמו הפרטי Akiko3 וגם שם המשפחה שלו Yokomoto4 או שהמספר
+המזהה ) au_id ( של סופר שווה ל – 672-71-2249
+10 הצג את כל הספרים אשר הכותרת שלהם ) title ( מכילה את המילה: computer 1את כל הספרים אשר הסוג שלהם אינו פסיכולוגיה הצג1
+(Berkeley) 12 הצג את כל הסופרים אשר לא מתגוררים בברקלי
+N הצג את כל הסופרים ששמם הפרטי מסתיים באות 13 
+ */
+
+/*Question. 1 */
+
+SELECT *
+FROM `Books` 
+WHERE `title` LIKE 'Th%'
+
+/*Question. 2 */
+
+SELECT *
+FROM `Books` 
+WHERE `type` = 'business' OR `type` = 'psychology'
+
+/*Question. 3 */
+
+SELECT *
+FROM `Authors` 
+WHERE `au_lname`  LIKE 's%'
+
+/*Question. 4 */
+
+SELECT *
+FROM `Authors` 
+WHERE `au_state` LIKE ('%N%')
+
+/*Question. 5 */
+
+SELECT *
+FROM `Authors` 
+WHERE `au_sex` = 'f' AND `au_city` = 'Oakland'
+	OR `au_sex` = 'm' AND `au_city` = 'Berkeley'
+
+/*Question. 6 */
+
+SELECT *
+FROM `Authors` 
+WHERE `au_sex` = 'f' AND `au_state` = 'CA' 
+	OR `au_sex` = 'm' AND `au_state` = 'IN'
+	OR `au_salary` > 10000
+
+/*Question. 7 */
+
+SELECT *
+FROM `Authors` 
+WHERE `au_city` IN ('Berkeley', 'Lawrence','Nashville','San Jose')
+
+/*Question. 8 */
+
+SELECT *
+FROM `Authors` 
+WHERE `au_fname` LIKE '%1' 
+
+/*Question. 9 */
+
+SELECT *
+FROM `Authors` 
+WHERE `au_fname` = 'Akiko3' AND `au_lname` = 'Yokomoto4'
+	OR `au_id` = '672-71-2249'
+
+/*Question. 10 */
+
+SELECT *
+FROM `Books` 
+WHERE `title` LIKE  '%Computer%'
+
+/*Question. 11 */
+
+SELECT *
+FROM `Books` 
+WHERE `type` NOT LIKE  'psychology'
+
+/*Question. 12 */
+
+SELECT *
+FROM `Authors`  
+WHERE `au_city` NOT IN ('Berkeley')
+
+/*Question. 13 */
+
+SELECT *
+FROM `Authors` 
+WHERE `au_fname` LIKE '%n'
