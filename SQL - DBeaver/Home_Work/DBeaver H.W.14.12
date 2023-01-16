@@ -1,0 +1,57 @@
+/*
+Code in DBeaver
+
+תרגול מאגר נתונים Books
+1 הצג מטבלת ספרים, את כל הספרים אשר מחירם נמוך מ $10
+2 הצג מטבלת ספרים, את כל הספרים אשר תאריך הפרסום שלהם הוא בחודש יולי 2010
+3 הצג מטבלת עובדים, את כל העובדים אשר שנת תחילת העבודה שלהם )date_hire )הוא בין 
+2001 – ל 1998
+4 הצג את כל הסופרים אשר מתגוררים בעיר Oakland
+5 הצג את כל הסופרים מקטגוריית רומנטיקה
+6 הצג את כל הסופרים אשר משכורתם הינה החל מ $000,18 ומעלה
+7 הצג את כל סופרי המדע הבדיוני
+*/
+
+
+/*Question. 1 */
+SELECT *
+FROM `Books` 
+WHERE `price` < 10
+
+/*Question. 2 */
+
+SELECT * 
+FROM `Books`  
+WHERE `pubdate` BETWEEN '2010-07-01' AND '2010-07-31'
+
+/*Question. 3 */
+
+SELECT *
+FROM `Employees`  
+WHERE `hire_date`  BETWEEN '1998-01-01' AND '2001-01-12'
+
+
+/*Question. 4 */
+
+SELECT *
+FROM `Authors` 
+WHERE `au_city` = 'Oakland'
+
+/*Question. 5 */
+
+SELECT *
+FROM `Authors` 
+WHERE `au_subject` = 'Romance'
+
+
+/*Question. 6 */
+
+SELECT *
+FROM `Authors` 
+WHERE `au_salary` >= 18000
+
+/*Question. 7 */
+
+SELECT *
+FROM `Authors` 
+WHERE `au_subject` = 'Sci-fi'
